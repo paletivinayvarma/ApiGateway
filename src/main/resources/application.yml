@@ -1,0 +1,26 @@
+server:
+  port: 8090
+spring:
+  application:
+    name: ApiGateway
+  cloud:
+    gateway:
+      mvc:
+        routes:
+        - id: employee_route
+#          uri: http://localhost:8085
+          uri: lb://EMPLOYEE-SERVICE
+          predicates:
+          - Path= /employee/api/**
+        - id: product_route
+#          uri: http://localhost:9191
+          uri: lb://product-service
+          predicates:
+          - Path= /product/api/**
+          
+          
+          
+          
+            
+
+
